@@ -3,6 +3,7 @@ const express=require('express');
 const fs=require('fs');
 const morgan=require('morgan');
 const hpp=require('hpp');
+const compression=require('compression');
 const tourrouter = require('./routes/tourRoutes');
 const userrouter = require('./routes/userRoutes');
 const appError=require('./utils/appError');
@@ -127,7 +128,7 @@ app.use(hpp({
 }));
 
 
-
+app.use(compression());
 // app.use((req,res,next)=>{
 //     console.log('hello from the middleware');
 //     next();
