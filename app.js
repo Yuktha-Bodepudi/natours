@@ -5,6 +5,7 @@ const morgan=require('morgan');
 const hpp=require('hpp');
 const compression=require('compression');
 const tourrouter = require('./routes/tourRoutes');
+const cors=require('cors');
 const userrouter = require('./routes/userRoutes');
 const appError=require('./utils/appError');
 const errorcontroller=require('./Controller/errorController');
@@ -90,6 +91,10 @@ app.use(
 
 app.set('view engine','pug');
 app.set('views', path.join(__dirname,'views'));
+
+app.use(cors());
+
+app.options('*',cors());
 
 // to call all the static files
 app.use(express.static(path.join(__dirname,'public')));
